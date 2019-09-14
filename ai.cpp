@@ -26,11 +26,11 @@ int temp_position[] = {0, 0, 0, 0, 0, 0, 65, 65, 65, 65, 65, 65};
 int temp_movenumber[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 //int currentPlayer = 0;
 
-void doMove(int piece) {
+/*void doMove(int piece) {
 	temp_position[piece] +=	movevalue[(piece * 3) + temp_movenumber[piece]];
 	temp_movenumber[piece] = (temp_movenumber[piece] + 1) % 3;
 	//cout << "Move: " << temp_position[piece] << endl;
-}
+}*/
 
 //stukken1[?] stukken2[?] depth
 void calculateMove(int ownpiece, int enemypiece, int depth) {
@@ -53,7 +53,12 @@ void calculateMove(int ownpiece, int enemypiece, int depth) {
 					score = 1;
 				}
 			}
-			if (temp_position[ownpiece] > 63) score = 1;
+			if (temp_position[ownpiece] > 63) {
+
+				score = 1;
+				cout << piecename[ownpiece] << " " << piecename[enemypiece] << "   score: " << score << endl;
+				break;
+			}
 
 			//Tegenstander doet zet
 			if (temp_position[enemypiece] > 1) doMove(enemypiece);
@@ -62,7 +67,7 @@ void calculateMove(int ownpiece, int enemypiece, int depth) {
 				/*for (int i = 0; i < 12; i++) {
 					cout << temp_position[i] << "   ";
 				}*/
-				cout << piecename[ownpiece] << "  " << piecename[enemypiece] << "   score: " << score << endl;
+				cout << piecename[ownpiece] << " LUNTE " << piecename[enemypiece] << "   score: " << score << endl;
 				break;
 			}
 		}

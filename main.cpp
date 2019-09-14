@@ -7,7 +7,7 @@
 #include <iostream>
 #include <thread>
 
-#include "ai.hpp"
+#include "simple.hpp"
 using namespace std;
 
 /*int positions[12];
@@ -24,11 +24,23 @@ int main() {
 		cout << "|" << i << "|: " << positions[i] << endl;
 	}
 	*/
-	thread t1 {calculateMove, QUEEN1, HORSE2, 20};
-	thread t2 {calculateMove, QUEEN1, PAWN2, 20};
 
+	/*
+	int depth = 50;
+	thread t1 {calculateMove, QUEEN1, PAWN2, depth};
 	t1.join();
+	thread t2 {calculateMove, QUEEN1, BISHOP2, depth};
 	t2.join();
+	thread t3 {calculateMove, QUEEN1, HORSE2, depth};
+	t3.join();
+	thread t4 {calculateMove, QUEEN1, TOWER2, depth};
+	t4.join();
+	thread t5 {calculateMove, QUEEN1, QUEEN2, depth};
+	t5.join();
+	thread t6 {calculateMove, QUEEN1, KING2, depth};
+	t6.join();
+	*/
+	cout << findBestMove(0, 1);
 }
 
 
