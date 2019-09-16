@@ -22,17 +22,33 @@
  */
 
 enum pieces {
-	PAWN1, HORSE1, BISHOP1, TOWER1, QUEEN1, KING1, PAWN2, HORSE2, BISHOP2, TOWER2, QUEEN2, KING2
+	WHITE_PAWN, WHITE_HORSE, WHITE_BISHOP, WHITE_ROOK, WHITE_QUEEN, WHITE_KING,
+	BLACK_PAWN, BLACK_HORSE, BLACK_BISHOP, BLACK_ROOK, BLACK_QUEEN, BLACK_KING, PIECES
 };
 
-const std::string piecename[] {"Player 1 Pawn ", "Player 1 Horse ", "Player 1 Bishop ", "Player 1 Tower ", "Player 1 Queen ", "Player 1 King ", "Player 2 Pawn ", "Player 2 Horse ", "Player 2 Bishop ", "Player 2 Rook ", "Player 2 Queen ", "Player 2 King "};
+enum player {
+	WHITE, BLACK
+};
 
-const int steps[] {			2, 3, 4, 5, 9, 7,
-							-2, -3, -4, -5, -9, -7 };
+const std::string piecename[] {	"WHITE Pawn ", "WHITE Horse ", "WHITE Bishop ", "WHITE Rook ", "WHITE Queen ", "WHITE King ",
+								"BLACK Pawn ", "BLACK Horse ", "BLACK Bishop ", "BLACK Rook ", "BLACK Queen ", "BLACK King ",
+								"NONE "};
 
-const float scoreonfinish[] {	1, 1, 1, 1, 1, 2,
-							-1, -1, -1, -1, -1, -2, 0 }; //laatste 0 is voor getTaken
+const int steps[] {	2, 	3, 	4, 	5, 	9, 	7,
+					-2, -3, -4, -5, -9, -7 };
+
+const float scoreonfinish[] {	1,	1,	1,	1,	1,	2,
+								-1,	-1,	-1,	-1,	-1,	-2,	0 }; //laatste 0 is voor getTaken
+
+const float scorePieceActivity[] {	0.05,	0.05,	0.05,	0.05,	0.05,	0.05,
+									-0.05,	-0.05,	-0.05,	-0.05,	-0.05, -0.05	};
+
+const float WHITE_MATE = 1000;
+const float BLACK_MATE = -1000;
+
+void piecePos(int, int);
+void setupBoard(int, int, int, int, int, int, int, int, int, int, int, int);
 void multipv();
-int findBestMove(int, int);
+void engineMove(int, int);
 
 #endif /* SIMPLE_HPP_ */

@@ -10,14 +10,6 @@
 #include "simple.hpp"
 using namespace std;
 
-/*int positions[12];
-
-void init() {
-	for (int i = 0; i < 12; i++) {
-		positions[i] = 0;
-	}
-}*/
-
 int main() {
 	//init();
 	/*for (int i = 0; i < 12; i++) {
@@ -40,7 +32,12 @@ int main() {
 	thread t6 {calculateMove, QUEEN1, KING2, depth};
 	t6.join();
 	*/
-	cout << findBestMove(0, 1);
+	piecePos(WHITE_KING, 26);
+	piecePos(BLACK_PAWN, 33);
+	int depth = 1;
+
+	multipv();
+	engineMove(WHITE, depth);
 }
 
 
